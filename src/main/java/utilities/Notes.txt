@@ -1,0 +1,14 @@
+Scenario for reference:
+Customer activates app (enters store) and is provided a list of item that they can purchase including those items price
+for each item they select, they should be asked the quantity of that item they would like. We can confirm the quantity
+then ask if they would like any more food or checkout? This will continue until they choose checkout at which time
+we will add up their total and print out a receipt.
+The receipt will include Item Name, quantity, and price along with a total quantity and total price at the bottom. They
+can then leave or quickly grab another item?
+
+Header (welcome sign)
+Menus: list of inventory (item, qty, price), ask how many of the item they want, check out or continue,
+and the last one leave (print the receipt) or quickly run back in and grab another item? (this will start the program over).
+#Menus: 4
+
+Product
