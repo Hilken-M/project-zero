@@ -1,6 +1,7 @@
 package driver;
 
 //import model.Menu;
+import model.Menu;
 import services.GroceryService;
 import utilities.ConnectionUtil;
 
@@ -15,11 +16,12 @@ public class Driver {
 
         conn.setAutoCommit(true);
 
-        System.out.println(groceryService.getGrocery("Toilet Paper"));
-        groceryService.addGrocery( 4, "Power Ranger", 7.99);
 
-//           Menu myMenu = new Menu();
-//           myMenu.printHeader();
+        //System.out.println(groceryService.getGrocery("Toilet Paper"));
+        //groceryService.addGrocery( 3, "Power Ranger", 7.99, 10);
+
+           Menu myMenu = new Menu();
+           myMenu.runMenu();
 
 
 

@@ -14,12 +14,12 @@ public class GroceryService {
     public GroceryService(){grocerydao = new GroceryDAO();}
     public GroceryService(GroceryDAO dao){ grocerydao = dao;}
 
-    public boolean addGrocery(int id, String name, double price){
+    public boolean addGrocery(int id, String name, double price, int quantity){
         if(id<0){
             return false;
         }
         try{
-            Grocery g = new Grocery(id, name, price);
+            Grocery g = new Grocery(id, name, price, quantity);
             grocerydao.addGrocery(g);
             return true;
         } catch(SQLException e){

@@ -7,13 +7,15 @@ public class Grocery {
     private int productcode;
     private String item_name;
     private double price;
+    private int quantity;
 
     //keep track of groceries selected by customer
 
-    public Grocery(int ProductCode, String item_name, double price){
+    public Grocery(int productcode, String item_name, double price, int quantity){
         this.productcode = productcode;
         this.item_name = item_name;
         this.price = price;
+        this.quantity = quantity;
     }
     
     public int getProductcode() {
@@ -24,7 +26,7 @@ public class Grocery {
         this.productcode = productcode;
     }
 
-    public String getItem_name() {
+    public String getItem_name(){
         return item_name;
     }
 
@@ -40,11 +42,20 @@ public class Grocery {
         this.price = price;
     }
 
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity){
+        this.quantity = quantity;
+    }
+
     @Override
     public String toString(){
-        return "Grocery{" +
-                "grocery=" + item_name +
-                ", price=" + price +
+        return "Grocery Selected{" +
+                "product= " + item_name +
+                ", price= $" + price +
+                ", quantity= " + quantity +
                 //", quantity= " + quantity + // I need to add a quantity column and tracker (possibly ProductCode and Description)
                 '}';
     }
@@ -54,10 +65,12 @@ public class Grocery {
 //        if (this = o) return true;
 //        if (o = null || getClass() != o.getClass()) return false;
 //        Grocery grocery = (Grocery) 0;
-//        return item_name == grocery.item_name && price == grocery.price; //Need to add quantity and possibly Product Code and Description
+//        return productcode == grocery.productcode && item_name == grocery.item_name && price == grocery.price && quantity == grocery.quantity;
 //    }
 
     @Override
-    public int hashCode() {return Objects.hash(item_name, price);}
+    public int hashCode() {return Objects.hash(productcode, item_name, price, quantity);}
+
+
 }
 
