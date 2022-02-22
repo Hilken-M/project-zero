@@ -5,7 +5,7 @@ public class ArrayList<G> {
     // Will store objects in an array
     Object[] arrayList;
 
-    int elementsInArray;
+    public int length;
 
 //	static Object a[]  = {"wam", "bam", "fuu"};
 //	static Object b[] = {"wam", "bam", "fuu"};
@@ -41,17 +41,17 @@ public class ArrayList<G> {
 
     public ArrayList() {
         arrayList = new Object[0];
-        elementsInArray = 0;
+        length = 0;
     }
 
     public void add(Object x) {
 
-        if (this.arrayList.length == this.elementsInArray) {
+        if (this.arrayList.length == this.length) {
             // If true, make array bigger ++
             this.embiggen();
         }
-        this.arrayList[this.elementsInArray] = x;
-        this.elementsInArray++;
+        this.arrayList[this.length] = x;
+        this.length++;
     }
 
     //a method that can return a boolean determining if your array list contains a certain item
@@ -84,6 +84,13 @@ public class ArrayList<G> {
         return true;
     }
 
+    public boolean contains(Object x) {
+        for (Object o : arrayList) {
+            if (o.equals(x)) return true;
+        }
+        return false;
+    }
+
     public String toString() {
         String temp = new String();
         for (int i = 0; i < arrayList.length; i++) {
@@ -96,8 +103,16 @@ public class ArrayList<G> {
         //a method to add a full array to be itterated over?
     }
 
-    public void getIndex(){
-        //pull a specific index
+    public int returnIndex(Object p){
+       return 1;
+        // return int of array location
+    }
+
+    public Object getIndex(int i){
+        if(i >= this.length || i < 0){
+            return null;
+        }
+        return arrayList[i];
     }
 
 

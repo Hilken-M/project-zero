@@ -1,21 +1,34 @@
 package model;
 
+import MyCollection.ArrayList;
+
 public class ShoppingCart {
 
     private int totalCost = 0;
-    ShoppingCart cart1 = new ShoppingCart();
-    ShoppingCart cart2 = new ShoppingCart();
+    ArrayList<Grocery> cart = new ArrayList<>();
+
 
     public ShoppingCart(){
         // TODO document why this constructor is empty
     }
 
-    public void fillCart(){
-        //method to add items into my arraylist collection we will call cart
+    public void addToCart(Grocery g, int quant){
+        if(cart.contains(g)){
+            //if its there, update quantity
+        } else {
+            cart.add( new Grocery(
+                    g.getProductcode(),
+                    g.getItem_name(),
+                    g.getPrice(),
+                    quant)
+            );
+        }
     }
 
-    public String printCart(){
-        return null;
+    public void printCart(){
+        for (int i = 0; i < cart.length ; i++) {
+            System.out.println(cart.getIndex(i).toString());
+        }
     }
 
     public int getTotalCost(){
@@ -23,3 +36,4 @@ public class ShoppingCart {
         //method will likely multiply each item, by quantity selected for all products in a cart
     }
 }
+// see line 226 on in Menu for BankApp for For loop logic
