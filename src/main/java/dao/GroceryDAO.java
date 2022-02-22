@@ -46,4 +46,23 @@ public class GroceryDAO {
 
 
 
+//        public void update(Grocery Y) throws SQLException {
+//            PreparedStatement statement = conn.prepareStatement(
+//                    "Insert into Products (ProductCode, item_name, Price, Quantity)" + "Values"
+//                            + "(?,?,?,?)");
+//            int parameterIndex = 0;
+//            statement.setInt(++parameterIndex, Y.getProductcode());
+//            statement.setString(++parameterIndex, Y.getItem_name());
+//            statement.setDouble(++parameterIndex, Y.getPrice());
+//            statement.setInt(++parameterIndex, Y.getQuantity());
+//            statement.executeUpdate();
+//        }
+//
+//        public void delete(Grocery Z) throws SQLException {
+//         //implement delete method
+//        }
+//
+
+
+
 }

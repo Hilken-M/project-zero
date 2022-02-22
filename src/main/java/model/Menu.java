@@ -11,6 +11,7 @@ We probably want to output a confirmation of sorts to the customer
  */
 
 package model;
+import java.sql.Array;
 import java.sql.SQLException;
 import java.util.Scanner;
 
@@ -24,8 +25,8 @@ public class Menu {
     Scanner keyboard = new Scanner(System.in);
 
     boolean exit;
-    //ArrayList<GroceryDAO> shoppingCart = new ArrayList<>();
-    GroceryService shoppingCart = new GroceryService();
+    GroceryService shelf = new GroceryService();
+    ShoppingCart shoppingCart = new ShoppingCart();
 
 
     public void runMenu() throws SQLException {
@@ -33,7 +34,7 @@ public class Menu {
         while(!exit) {
             printMenu();
             int choice = requestInput();
-            performMenuInput(choice);
+            //performMenuInput(choice);
         }
     }
     //
@@ -77,35 +78,35 @@ public class Menu {
 //
 //    }
 
-    private void performMenuInput(int choice) throws SQLException {
+    private void performMenuInput(int choice, int quant) throws SQLException {
         switch (choice){
             case 0:
                 System.out.println("Thank you for shopping at the MaxFoods Grocery Store, see you again soon!");
                 System.exit(0);
                 break;
             case 1:
-                shoppingCart.getGrocery("Toilet Paper");
-                System.out.println(choice);
+                shoppingCart.addToCart(shelf.getGrocery("Toilet Paper"), quant);
                 break;
             case 2:
-                shoppingCart.getGrocery("Cat Tree");
+                shoppingCart.addToCart(shelf.getGrocery("Cat Tree"), quant);
                 break;
             case 3:
-                shoppingCart.getGrocery("Sparkling Water");
+                shoppingCart.addToCart(shelf.getGrocery("Sparkling Water"), quant);
                 break;
             case 4:
-                shoppingCart.getGrocery("Green Power Ranger");
+                shoppingCart.addToCart(shelf.getGrocery("Green Power Ranger"), quant);
                 break;
             case 5:
-                shoppingCart.getGrocery("Power Adaptor");
+                shoppingCart.addToCart(shelf.getGrocery("Power Adaptor"), quant);
                 break;
             case 6:
-                shoppingCart.getGrocery("Type C power cable");
+                shoppingCart.addToCart(shelf.getGrocery("Type-C power cable"), quant);
                 break;
             default:
                 System.out.println("Unknown error has occurred.");
                 break;
         }
+        shoppingCart.printCart();
     }
 
 

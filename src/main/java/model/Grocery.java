@@ -59,14 +59,11 @@ public class Grocery {
                 //", quantity= " + quantity + // I need to add a quantity column and tracker (possibly ProductCode and Description)
                 '}';
     }
-    
-//    @Override
-//    public boolean equals(Object 0){
-//        if (this = o) return true;
-//        if (o = null || getClass() != o.getClass()) return false;
-//        Grocery grocery = (Grocery) 0;
-//        return productcode == grocery.productcode && item_name == grocery.item_name && price == grocery.price && quantity == grocery.quantity;
-//    }
+
+    public boolean equals(Grocery grocery){
+        if (grocery == null || getClass() != grocery.getClass()) return false;
+        return productcode == grocery.productcode && item_name.equals(grocery.item_name);
+    }
 
     @Override
     public int hashCode() {return Objects.hash(productcode, item_name, price, quantity);}
