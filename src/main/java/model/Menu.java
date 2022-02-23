@@ -11,18 +11,17 @@ We probably want to output a confirmation of sorts to the customer
  */
 
 package model;
-import java.sql.Array;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-import MyCollection.ArrayList;
-import dao.GroceryDAO;
-import model.Grocery;
+import driver.Driver;
 import services.GroceryService;
+
 
 public class Menu {
     //
     Scanner keyboard = new Scanner(System.in);
+
 
     boolean exit;
     GroceryService shelf = new GroceryService();
@@ -34,7 +33,11 @@ public class Menu {
         while(!exit) {
             printMenu();
             int choice = requestInput();
-            //performMenuInput(choice);
+            if(choice == 0){
+               performMenuInput(choice, 0);
+            }
+            int quant = selectQuantity();
+            performMenuInput(choice, quant);
         }
     }
     //
@@ -50,6 +53,7 @@ public class Menu {
 ////    and the last one leave (print the receipt) or quickly run back in and grab another item? (this will start the program over).
 //            #Menus: 4
    public void printMenu(){
+        System.out.println("If you would like to checkout or leave enter 0");
         System.out.println("Choice 1: Toilet Paper");
         System.out.println("Choice 2: Cat Tree");
         System.out.println("Choice 3: Sparkling Water");
@@ -58,29 +62,35 @@ public class Menu {
         System.out.println("Choice 6: Type 'C' power cable");
    }
 
+
+
     private int requestInput(){
         int choice = -1;
         do{
-            System.out.println("Enter your choice for the item you would like to add to your cart: ");
+            System.out.println("Please enter your choice by selecting 0-6  ");
             try{
                 choice = Integer.parseInt(keyboard.nextLine());
             } catch (NumberFormatException e) {
-                System.out.println("Invalid selection. Please only enter a number 1-6");
+                System.out.println("Invalid selection. Please only enter a selection 1-6");
             }
             if (choice < 0 || choice > 6){
                 System.out.println("Choice outside of range. Please enter a number from '1' to '6'");
             }
         } while(choice < 0 || choice > 6);
        return choice;
+
     }
 
-//    private void selectQuantity(){
-//
-//    }
+    private int selectQuantity(){
+        System.out.println("How many of this item would you like? ");
+        int quant = Integer.parseInt(keyboard.nextLine());
+        return quant;
+    }
 
     private void performMenuInput(int choice, int quant) throws SQLException {
         switch (choice){
             case 0:
+                printReceipt();
                 System.out.println("Thank you for shopping at the MaxFoods Grocery Store, see you again soon!");
                 System.exit(0);
                 break;
@@ -106,7 +116,14 @@ public class Menu {
                 System.out.println("Unknown error has occurred.");
                 break;
         }
+        //Driver.log.info(shoppingCart);
+    }
+
+    public void printReceipt(){
         shoppingCart.printCart();
+        shoppingCart.sumCost();
+        System.out.println("The total Shopping Cart cost is: $" + shoppingCart.getTotalCost());
+
     }
 
 
