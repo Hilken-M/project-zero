@@ -20,7 +20,7 @@ public class GroceryService {
         }
         try{
             Grocery g = new Grocery(id, name, price, quantity);
-            grocerydao.addGrocery(g);
+            grocerydao.createGrocery(g);
             return true;
         } catch(SQLException e){
             e.printStackTrace();

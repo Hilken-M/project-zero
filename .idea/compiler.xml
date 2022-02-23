@@ -7,8 +7,10 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="ProjectZero" />
-        <module name="JavaReactAzure" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="JavaReactAzure" target="15" />
+    </bytecodeTargetLevel>
   </component>
 </project>

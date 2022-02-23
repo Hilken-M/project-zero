@@ -1,10 +1,14 @@
 package model;
 
-import MyCollection.ArrayList;
+import myCollection.ArrayList;
+
 
 public class ShoppingCart {
 
-    private int totalCost = 0;
+
+
+    private int quantity;
+    private double totalCost = 0;
     ArrayList<Grocery> cart = new ArrayList<>();
 
 
@@ -13,15 +17,26 @@ public class ShoppingCart {
     }
 
     public void addToCart(Grocery g, int quant){
-        if(cart.contains(g)){
-            //if its there, update quantity
+       // Object[] data;
+        int i = cart.returnIndex(g);
+        if(i != -1){
+            Grocery p = (Grocery) cart.getIndex(i);
+            int currentQuant = p.getQuantity();
+            p.setQuantity(quant+currentQuant);
         } else {
             cart.add( new Grocery(
-                    g.getProductcode(),
-                    g.getItem_name(),
+                    g.getProductCode(),
+                    g.getItemName(),
                     g.getPrice(),
-                    quant)
-            );
+                    quant));
+        }
+        quantity += quant;
+    }
+
+    public void sumCost(){
+        for(int i = 0; i < cart.length; i++){
+            Grocery g = (Grocery) cart.getIndex(i);
+            totalCost += g.getPrice() * g.getQuantity();
         }
     }
 
@@ -30,10 +45,20 @@ public class ShoppingCart {
             System.out.println(cart.getIndex(i).toString());
         }
     }
+    public int getQuantity() {
+        return quantity;
+    }
 
-    public int getTotalCost(){
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public double getTotalCost() {
         return totalCost;
-        //method will likely multiply each item, by quantity selected for all products in a cart
+    }
+
+    public void setTotalCost(double totalCost) {
+        this.totalCost = totalCost;
     }
 }
 // see line 226 on in Menu for BankApp for For loop logic

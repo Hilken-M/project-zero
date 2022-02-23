@@ -1,4 +1,4 @@
-package MyCollection;
+package myCollection;
 
 public class ArrayList<G> {
 
@@ -7,35 +7,8 @@ public class ArrayList<G> {
 
     public int length;
 
-//	static Object a[]  = {"wam", "bam", "fuu"};
-//	static Object b[] = {"wam", "bam", "fuu"};
 
     public static void main(String[] args) {
-//        ArrayList bob = new ArrayList();
-//        bob.add(2);
-//        bob.add(3);
-//        bob.add(7);
-//        bob.add(3.14);
-//        bob.add("Johnathon");
-//        // bob.add(new Object());
-//
-//        ArrayList john = new ArrayList();
-//        john.add(2);
-//        john.add(3);
-//        john.add(7);
-//        john.add(3.14);
-//        john.add("Johnathon");
-//        // john.add(new Object());
-//
-//        System.out.println(bob.toString());
-//        System.out.println(john.toString());
-//
-//
-//        if(bob.equals(john)) {
-//            System.out.println("Both Arrays are equal");
-//        } else {
-//            System.out.println("The Arrays are not equal");
-//        }
 
     }
 
@@ -55,17 +28,19 @@ public class ArrayList<G> {
     }
 
     //a method that can return a boolean determining if your array list contains a certain item
-    public void compareElement(){
-
+    public boolean compareElement(Object j){
+        for (Object i : arrayList){
+            if(i.equals(j)){
+            return true;
+            }
+        }
+        return false;
     }
 
     private void embiggen() {
-
         Object[] temp = new Object[this.arrayList.length + 1];
         for (int i = 0; i < arrayList.length; i++) {
             temp[i] = arrayList[i];
-            {
-            }
         }
         arrayList = temp;
     }
@@ -99,13 +74,15 @@ public class ArrayList<G> {
         return temp.substring(0, temp.length() - 1);
     }
 
-    public void add(){
-        //a method to add a full array to be itterated over?
-    }
 
-    public int returnIndex(Object p){
-       return 1;
-        // return int of array location
+    public int returnIndex(Object p) {
+       var index = -1;
+        for(var i = 0; i < arrayList.length; i++) {
+            if(arrayList[i].equals(p)) {
+                return i;
+            }
+           }
+        return -1;
     }
 
     public Object getIndex(int i){
@@ -114,8 +91,6 @@ public class ArrayList<G> {
         }
         return arrayList[i];
     }
-
-
 
 }
 
